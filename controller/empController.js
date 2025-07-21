@@ -1,6 +1,4 @@
 const empModel = require("../model/empModel");
-
-// List all employees
 const getEmp = async (req, res) => {
   try {
     const result = await empModel.find();
@@ -11,7 +9,6 @@ const getEmp = async (req, res) => {
   }
 };
 
-// Render Add/Edit form
 const getEmpById = async (req, res) => {
   try {
     const employee = req.params.id ? await empModel.findById(req.params.id) : null;
@@ -22,7 +19,6 @@ const getEmpById = async (req, res) => {
   }
 };
 
-// Save new or update existing employee
 const saveEmp = async (req, res) => {
   try {
     if (req.body.id) {
@@ -44,7 +40,6 @@ const saveEmp = async (req, res) => {
   }
 };
 
-// Delete employee
 const deleteEmp = async (req, res) => {
   try {
     await empModel.findByIdAndDelete(req.params.id);
